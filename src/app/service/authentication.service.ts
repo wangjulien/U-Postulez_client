@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
 import * as CONST from '../constants';
-import { Employee } from '../model/employee';
+import { User } from '../model/user';
 import { error } from 'util';
 import { HttpResponse } from 'selenium-webdriver/http';
 import { TokenStorage } from './token.storage';
@@ -38,12 +38,12 @@ export class AuthenticationService {
     }
 
     authAs(login: string) {
-        return this.http.get<Employee>(this.authAs_url + '/' + login).map(employee => {
-            localStorage.setItem('currentUser', JSON.stringify(employee));
+        return this.http.get<User>(this.authAs_url + '/' + login).map(user => {
+            localStorage.setItem('currentUser', JSON.stringify(user));
 
             // console.log(JSON.stringify(employee));
             this.loggedIn.next(true);
-            return employee;
+            return user;
         });
     }
 

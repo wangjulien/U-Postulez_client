@@ -1,31 +1,31 @@
 <div>
-  <a [routerLink]="['/gestion-client']">
-    <button type="button" class="btn btn-success">Retour</button>
+  <a [routerLink]="['/gestion-article']">
+    <button type="button" class="btn btn-success">Return</button>
   </a>
 </div>
 
 <div class="col-md-6 col-md-offset-3">
-  <h2>Profil du conseiller</h2>
+  <h2>User's profile</h2>
   <form name="form" #profileForm="ngForm" novalidate>
 
-    <label for="nom">Nom</label>
-    <input type="text" class="form-control" name="nom" value="{{model.nom}}" disabled />
+    <label for="firstName">FirstName</label>
+    <input type="text" class="form-control" name="firstName" value="{{model.firstName}}" disabled />
 
-    <label for="prenom">Prénom</label>
-    <input type="text" class="form-control" name="prenom" value="{{model.prenom}}" disabled />
+    <label for="lastName">LastName</label>
+    <input type="text" class="form-control" name="lastName" value="{{model.lastName}}" disabled />
 
-    <label for="login">Identifiant</label>
-    <input type="text" class="form-control" name="login" value="{{model.login}}" disabled/>
+    <label for="login">Email</label>
+    <input type="text" class="form-control" name="login" value="{{model.email}}" disabled/>
 
     <div class="form-group" [ngClass]="{ 'has-error': profileForm.submitted && !password.valid }">
-      <label for="password">Mot de passe</label>
+      <label for="password">Password</label>
       <input type="text" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-      <div *ngIf="profileForm.submitted && !password.valid" class="help-block">Le mot de passe est requis</div>
+      <div *ngIf="profileForm.submitted && !password.valid" class="help-block">The password is required</div>
     </div>
 
     <div class="form-group">
-      <button class="btn btn-primary" disabled>Mettre à jour</button>
-      <a [routerLink]="['/home']" class="btn btn-link">Retour</a>
+      <button class="btn btn-primary" disabled>Submit</button>
+      <a [routerLink]="['/home']" class="btn btn-link">Return</a>
     </div>
 
   </form>

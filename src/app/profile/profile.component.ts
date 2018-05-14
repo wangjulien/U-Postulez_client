@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Conseiller } from '../model/conseiller';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +9,11 @@ import { Conseiller } from '../model/conseiller';
 })
 export class ProfileComponent implements OnInit {
 
-  model: any;
+  model: User;
 
   constructor() { }
 
   update() {
-    
   }
 
   ngOnInit() {

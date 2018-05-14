@@ -14,16 +14,11 @@ import { HomeComponent } from './home/home.component';
 import { AlertComponent } from './alert/alert.component';
 import { ProfileComponent } from './profile/profile.component';
 
-import { UpdateclientComponent } from './updateclient/updateclient.component';
-import { VirementComponent } from './virement/virement.component';
-
 import { AlertService } from './service/alert.service';
 import { AuthenticationService } from './service/authentication.service';
 import { AuthGuard } from './service/auth.guard';
 import { JwtInterceptor } from './service/jwt.interceptor';
-import { ConseillerClientService } from './service/conseiller-client.service';
-import { GerantConseillerService } from './service/gerant-conseiller.service';
-import { VirementService } from './service/virement.service';
+import { ArticleService } from './service/article.service';
 import { TokenStorage } from './service/token.storage';
 import { ListArticlesComponent } from './list-articles/list-articles.component';
 import { ListUsersComponent } from './list-users/list-users.component';
@@ -31,8 +26,6 @@ import { ListUsersComponent } from './list-users/list-users.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UpdateclientComponent,
-    VirementComponent,
     LoginComponent,
     AlertComponent,
     ProfileComponent,
@@ -51,9 +44,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     AuthGuard,
     AlertService,
     AuthenticationService,
-    ConseillerClientService,
-    GerantConseillerService,
-    VirementService,
+    ArticleService,
     {
         provide: HTTP_INTERCEPTORS,
         useClass: JwtInterceptor,

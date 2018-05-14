@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
 import { AlertService } from '../service/alert.service';
+import { User } from '../model/user';
 
 @Component({
     selector: 'app-login',
@@ -10,7 +11,7 @@ import { AlertService } from '../service/alert.service';
 })
 export class LoginComponent implements OnInit {
 
-    model: any = {};
+    model: User = new User();
 
     returnUrl: string;
 
@@ -29,8 +30,8 @@ export class LoginComponent implements OnInit {
     }
 
     auth() {
-        this.authenticationService.auth(this.model.login, this.model.password)
-            .subscribe(resp => this.authAs(this.model.login),
+        this.authenticationService.auth(this.model.email, this.model.password)
+            .subscribe(resp => this.authAs(this.model.email),
                 error => this.alertService.error(error));
     }
 

@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { Conseiller } from '../model/conseiller';
-import { GerantConseillerService } from '../service/gerant-conseiller.service';
+import { User } from '../model/user';
+import { UserService } from '../service/user.service';
 import { AlertService } from '../service/alert.service';
 import { AuthenticationService } from '../service/authentication.service';
 
@@ -14,10 +14,10 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class ListUsersComponent implements OnInit {
 
-  conseillers: Array<Conseiller>;
+  users: Array<User>;
 
   constructor(
-    private gerantConseillerService: GerantConseillerService,
+    private userService: UserService,
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
     private router: Router) { }
@@ -29,26 +29,12 @@ export class ListUsersComponent implements OnInit {
   }
 
   getAllConseilers() {
-    this.gerantConseillerService.getConseillersByGerant(JSON.parse(localStorage.getItem('currentUser')).id)
-      .subscribe(data => this.conseillers = data, error => this.alertService.error(error.error));
-
     return false;
   }
 
   goToDetails(conseiller) {
     this.router.navigate(['/update-conseiller', conseiller.id]);
 
-    return false;
-  }
-
-  deleteConseiller(conseiller: Conseiller) {
-    console.log('Conseiller à supprimer : ' + JSON.stringify(conseiller));
-
-    if (confirm('Supprimer le conseiller ' + conseiller.nom + ' ' + conseiller.prenom + ' ?')) {
-      this.gerantConseillerService.deleteConseiller(conseiller.id)
-        .subscribe(() => { this.alertService.success('Suppression du conseiller réussi'); },
-        error => this.alertService.error(error.error));
-    }
     return false;
   }
 

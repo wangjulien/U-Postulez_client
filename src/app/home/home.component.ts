@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../model/employee';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +8,8 @@ import { Employee } from '../model/employee';
 })
 export class HomeComponent implements OnInit {
 
-  currentUser = new Employee();
-  
+  currentUser = new User();
+
   constructor() { }
 
   ngOnInit() {

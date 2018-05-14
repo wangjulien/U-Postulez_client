@@ -1,15 +1,14 @@
 import { Adresse } from './adresse';
 
-export class Employee {
+export class User {
   id: string;
-  refEmployee: string;
-  nom: string;
-  prenom: string;
-  login: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   password: string;
   adresse: Adresse;
 
-  roles: string[];
+  setAuths: string[];
 
   constructor() {
     this.adresse = new Adresse();

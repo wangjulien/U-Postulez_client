@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Conseiller } from '../model/conseiller';
 import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from '../service/authentication.service';
-import { Employee } from '../model/employee';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +11,9 @@ import { Employee } from '../model/employee';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
-  currentUser = new Employee();
+  currentUser = new User();
 
-  isGerant = false;
+  isAdmin = false;
 
   constructor(private authService: AuthenticationService) { }
 
@@ -23,10 +22,10 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn$.subscribe(() => {
       if (null != localStorage.getItem('currentUser')) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (this.currentUser.roles[0] === 'ROLE_GERANT') {
-          this.isGerant = true;
+        if (this.currentUser.setAuths[0] === 'ROLE_GERANT') {
+          this.isAdmin = true;
         } else {
-          this.isGerant = false;
+          this.isAdmin = false;
         }
       }
     });
