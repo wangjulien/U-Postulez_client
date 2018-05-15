@@ -13,7 +13,7 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.article_url);
+    return this.http.get<Article[]>(this.article_url + '?page=2&size=50');
   }
 
   getArticle(id): Observable<Article> {

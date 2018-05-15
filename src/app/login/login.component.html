@@ -3,7 +3,7 @@
     <form (ngSubmit)="auth()" #loginForm="ngForm" novalidate>
         <div class="form-group">
             <label for="login">Your email : </label>
-            <input type="text" class="form-control" id="login" placeholder="guest@gmail.com" required [(ngModel)]="model.email" name="login"
+            <input type="text" class="form-control" id="login" placeholder="guest@test.com" required [(ngModel)]="model.email" name="login"
                 #loginInput="ngModel" />
             <div [hidden]="loginInput.valid || loginInput.pristine" class="alert alert-danger">Un identifiant est requis</div>
         </div>

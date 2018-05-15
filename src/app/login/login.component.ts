@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     authAs(login: string) {
         this.authenticationService.authAs(login)
             .subscribe(data => this.router.navigate(['/home']),
-                error => this.alertService.error(error.error));
+                error => this.alertService.error(error));
     }
 
 }

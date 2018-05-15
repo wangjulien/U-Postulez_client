@@ -12,7 +12,7 @@ import { TokenStorage } from './token.storage';
 @Injectable()
 export class AuthenticationService {
 
-    private auth_url: string = CONST.HOST + ':' + CONST.PORT + '/login';
+    private auth_url: string = CONST.REST_HOST + '/login';
     private authAs_url: string = CONST.REST_HOST + '/auth';
 
     private loggedIn = new BehaviorSubject<boolean>(false);
@@ -31,17 +31,19 @@ export class AuthenticationService {
     auth(login: string, password: string) {
         console.log(`login service ${login} ${password}`);
 
-        const credentials: any = { username: login, password: password };
+        const credentials: any = { email: login, password: password };
 
         return this.http.post<any>(this.auth_url, credentials, {observe: 'response'})
-            .map( resp => this.token.saveToken(resp.headers.get('Authorization')) );
+            .map( resp => {
+                this.token.saveToken(resp.headers.get('Authorization'));
+             });
     }
 
     authAs(login: string) {
         return this.http.get<User>(this.authAs_url + '/' + login).map(user => {
             localStorage.setItem('currentUser', JSON.stringify(user));
 
-            // console.log(JSON.stringify(employee));
+            console.log(JSON.stringify(user));
             this.loggedIn.next(true);
             return user;
         });
