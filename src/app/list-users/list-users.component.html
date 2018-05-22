@@ -9,12 +9,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let conseiller of conseillers">
-      <td>{{conseiller.refEmployee}}</td>
-      <td>{{conseiller.nom}}</td>
-      <td>{{conseiller.prenom}}</td>
+    <tr *ngFor="let user of users">
+      <td>{{user.email}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
       <td>
-        <button class="btn btn-info" (click)="loginAsConeiller(conseiller)">Login</button>
+        <button class="btn btn-info" (click)="loginAsUser(user)">Login</button>
       </td>
     </tr>
   </tbody>

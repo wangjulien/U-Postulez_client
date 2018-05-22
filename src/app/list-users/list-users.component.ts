@@ -22,25 +22,25 @@ export class ListUsersComponent implements OnInit {
     private alertService: AlertService,
     private router: Router) { }
 
-  loginAsConeiller(conseiller) {
-    this.authenticationService.authAs(conseiller.login)
+  loginAsUser(user) {
+    this.authenticationService.authAs(user.email)
           .subscribe(data => this.router.navigate(['/home']),
                     error => this.alertService.error(error.error));
   }
 
-  getAllConseilers() {
+  getAllUsers() {
     return false;
   }
 
-  goToDetails(conseiller) {
-    this.router.navigate(['/update-conseiller', conseiller.id]);
+  goToDetails(user) {
+    this.router.navigate(['/update-user', user.id]);
 
     return false;
   }
 
   ngOnInit() {
-    console.log('liste-conseiller component marche');
-    this.getAllConseilers();
+    console.log('liste-user component marche');
+    this.getAllUsers();
   }
 
 }

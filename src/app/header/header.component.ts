@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn$.subscribe(() => {
       if (null != localStorage.getItem('currentUser')) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (this.currentUser.setAuths[0] === 'ROLE_GERANT') {
+        if (this.currentUser.roles[0] === 'ROLE_ADMIN') {
           this.isAdmin = true;
         } else {
           this.isAdmin = false;

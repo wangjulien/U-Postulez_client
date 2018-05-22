@@ -8,7 +8,7 @@ export class User {
   password: string;
   adresse: Adresse;
 
-  setAuths: string[];
+  roles: string[];
 
   constructor() {
     this.adresse = new Adresse();
